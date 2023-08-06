@@ -3,7 +3,6 @@ package bai8;
 import java.util.Scanner;
 
 public class Main {
-	private static ProductManager manager = ProductManager.getInstance();
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -86,6 +85,7 @@ public class Main {
 			return;
 		}
 
+		ProductManager manager = ProductManager.getInstance();
 		manager.addProduct(new Product(code, name, price, quantity));
 		System.out.println("San pham vua them:");
 		Product product = manager.findProduct(code);
@@ -94,12 +94,14 @@ public class Main {
 
 	private static void showAllProductInfo() {
 		System.out.println("Danh sach san pham: ");
+		ProductManager manager = ProductManager.getInstance();
 		manager.showAllProductInfo();
 	}
 
 	private static void findProduct() {
 		System.out.println("Nhap code san pham can tim: ");
 		String code = sc.next();
+		ProductManager manager = ProductManager.getInstance();
 		Product product = manager.findProduct(code);
 		if (product != null) {
 			System.out.println("Ket qua: ");
@@ -112,6 +114,7 @@ public class Main {
 	private static void deleteProduct() {
 		System.out.println("Nhap code san pham can xoa: ");
 		String code = sc.next();
+		ProductManager manager = ProductManager.getInstance();
 		Product product = manager.deleteProduct(code);
 		if (product != null) {
 			System.out.println("Thong tin san pham vua xoa: ");
@@ -144,6 +147,7 @@ public class Main {
 			return;
 		}
 
+		ProductManager manager = ProductManager.getInstance();
 		Product product = manager.changeProductInfo(new Product(code, name, price, quantity));
 		if (product != null) {
 			System.out.println("Thong tin san pham sau khi sua: ");
